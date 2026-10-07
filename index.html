@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f3b2c0">
+<title>Judy ♡ Gaith</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;min-height:100%;font-family:Georgia,"Times New Roman",serif}
+body{overflow-x:hidden;color:#7d3048;background:linear-gradient(180deg,#f4aaba 0%,#f8c9d0 32%,#f7d9d0 58%,#e9b9a9 76%,#708a60 100%);min-height:100vh}
+button{font:inherit}
+.page{position:relative;min-height:100vh;overflow:hidden}
+.sky{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.sun{position:absolute;width:170px;height:170px;border-radius:50%;right:-35px;top:80px;background:rgba(255,239,207,.5);filter:blur(3px);box-shadow:0 0 75px rgba(255,220,190,.5)}
+.cloud{position:absolute;width:190px;height:42px;border-radius:50px;background:rgba(255,255,255,.2);filter:blur(3px);animation:cloud 36s linear infinite}
+.cloud:before,.cloud:after{content:"";position:absolute;border-radius:50%;background:inherit}
+.cloud:before{width:75px;height:75px;left:30px;bottom:4px}.cloud:after{width:92px;height:92px;left:90px;bottom:0}
+.c1{top:100px;left:-220px}.c2{top:230px;left:-300px;transform:scale(.65);animation-duration:48s;animation-delay:-14s}.c3{top:350px;left:-250px;transform:scale(.45);animation-duration:55s;animation-delay:-28s}
+.content{position:relative;z-index:10;width:min(94%,520px);margin:auto;text-align:center;padding:48px 0 190px}
+.kicker{font-size:12px;letter-spacing:3px;text-transform:uppercase;opacity:.7;margin-bottom:13px}
+h1{font-size:clamp(39px,10vw,62px);line-height:1.03;font-weight:400;font-style:italic;margin:0;text-shadow:0 3px 12px rgba(90,35,55,.12);animation:float 4s ease-in-out infinite}
+.mainheart{font-size:32px;margin:13px 0 25px;animation:beat 2s ease-in-out infinite}
+.glass{max-width:480px;margin:auto;padding:20px 10px 22px;border:1px solid rgba(255,255,255,.65);border-radius:30px;background:rgba(255,242,244,.4);backdrop-filter:blur(10px);box-shadow:0 16px 45px rgba(100,40,50,.12),inset 0 1px rgba(255,255,255,.6)}
+.date{font-size:20px;margin-bottom:17px}.date small{opacity:.7;font-size:14px}
+.count{display:grid;grid-template-columns:repeat(4,1fr)}
+.unit{min-width:0}.unit+.unit{border-left:1px solid rgba(125,48,72,.22)}
+.num{font-size:clamp(27px,8vw,44px);font-weight:bold;line-height:1}
+.lab{font-size:10px;letter-spacing:1.3px;text-transform:uppercase;margin-top:7px;opacity:.78}
+.closer{font-style:italic;font-size:16px;margin-top:17px;opacity:.8}
+.garden-count{margin:15px auto 0;font-size:14px;opacity:.8}
+.photo{width:min(82%,355px);margin:43px auto 29px;transform:rotate(-2.5deg);animation:photo 6s ease-in-out infinite}
+.polaroid{background:#fffdf8;padding:11px 11px 43px;box-shadow:0 16px 38px rgba(65,40,30,.23);position:relative}
+.polaroid img{width:100%;display:block;aspect-ratio:1.05/1;object-fit:cover}
+.polaroid:after{content:"♡";position:absolute;right:14px;bottom:2px;font-size:31px;color:#d16a83}
+.message{max-width:400px;margin:0 auto;color:#fff8f7;font-size:19px;line-height:1.55;text-shadow:0 2px 7px rgba(70,40,30,.42)}
+.names{color:#fff;font-size:19px;margin-top:18px;text-shadow:0 2px 7px rgba(70,40,30,.42)}
+.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:24px auto 0}
+.action{border:1px solid rgba(255,255,255,.7);background:rgba(255,245,246,.34);color:#7d3048;border-radius:999px;padding:11px 17px;cursor:pointer;min-height:44px;backdrop-filter:blur(7px);box-shadow:0 6px 18px rgba(80,40,50,.1)}
+.action:active{transform:scale(.97)}
+.letter{display:none;max-width:430px;margin:18px auto 0;padding:20px;border-radius:22px;background:rgba(255,247,248,.55);border:1px solid rgba(255,255,255,.65);line-height:1.65;box-shadow:0 12px 30px rgba(80,40,50,.12)}
+.letter.open{display:block;animation:appear .5s ease}
+.memory{margin-top:20px;font-size:13px;opacity:.78}
+.garden{position:absolute;z-index:3;bottom:0;left:0;width:100%;height:175px;pointer-events:none;background:linear-gradient(to top,rgba(47,75,44,.96),rgba(70,103,62,.6),transparent)}
+.grass{position:absolute;bottom:-12px;width:4px;height:95px;border-radius:100%;background:#42653e;transform-origin:bottom;animation:sway 3s ease-in-out infinite}
+.flower{position:absolute;bottom:40px;font-size:29px;animation:sway 4s ease-in-out infinite}
+.heart,.petal,.firefly{position:absolute;pointer-events:none;z-index:5}
+.heart{bottom:-35px;font-size:21px;color:rgba(175,57,91,.72);animation:rise linear infinite}
+.petal{top:-35px;font-size:21px;animation:fall linear infinite}
+.firefly{width:5px;height:5px;border-radius:50%;background:#fff5b7;box-shadow:0 0 10px 4px rgba(255,238,165,.45);animation:glow 4s ease-in-out infinite}
+.intro-screen{position:absolute;z-index:30;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#f3aaba,#f7c9cf);animation:introOut 2.7s ease forwards;pointer-events:none}
+.jg{font-size:clamp(60px,18vw,108px);font-style:italic;color:#8d3854;opacity:0;animation:heartIn 2s .2s ease forwards}.jg span{display:inline-block;animation:miniBeat 1.2s 1.25s ease-in-out infinite}
+.meeting{display:none;position:relative;z-index:20;padding:80px 20px 170px;text-align:center;min-height:100vh}.meeting.show{display:block;animation:appear 1.2s ease}.meeting h2{font-size:clamp(42px,12vw,70px);font-style:italic;font-weight:400;margin:0 0 18px}.meeting p{font-size:19px;line-height:1.6;color:#fff}
+@keyframes cloud{from{transform:translateX(0)}to{transform:translateX(125vw)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+@keyframes photo{0%,100%{transform:rotate(-2.5deg) translateY(0)}50%{transform:rotate(-1deg) translateY(-7px)}}
+@keyframes sway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(8deg)}}
+@keyframes fall{0%{transform:translate(0,-40px) rotate(0);opacity:0}10%{opacity:.9}50%{transform:translate(55px,50vh) rotate(180deg)}100%{transform:translate(-35px,110vh) rotate(360deg);opacity:0}}
+@keyframes rise{0%{transform:translate(0,0) rotate(0);opacity:0}10%{opacity:.8}50%{transform:translate(25px,-50vh) rotate(20deg)}100%{transform:translate(-25px,-115vh) rotate(-20deg);opacity:0}}
+@keyframes glow{0%,100%{opacity:.1;transform:translate(0,0)}50%{opacity:1;transform:translate(12px,-15px)}}
+@keyframes heartIn{0%{opacity:0;transform:scale(.5)}55%{opacity:1;transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}
+@keyframes miniBeat{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+@keyframes introOut{0%,65%{opacity:1}100%{opacity:0;visibility:hidden}}
+@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:380px){.content{padding-top:40px}.message{font-size:17px}.names{font-size:17px}.garden{height:150px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="page" id="mainPage">
+  <div class="sky"><div class="sun"></div><div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div></div>
+  <div class="intro-screen"><div class="jg">J <span>♡</span> G</div></div>
+
+  <main class="content">
+    <div class="kicker">a little place for us</div>
+    <h1 id="headline">Until we're<br>together again...</h1>
+    <div class="mainheart">♡</div>
+
+    <section class="glass" aria-live="polite">
+      <div class="date">♡ 10 November 2026 <small>♡</small></div>
+      <div class="count">
+        <div class="unit"><div class="num" id="days">00</div><div class="lab">Days</div></div>
+        <div class="unit"><div class="num" id="hours">00</div><div class="lab">Hours</div></div>
+        <div class="unit"><div class="num" id="minutes">00</div><div class="lab">Minutes</div></div>
+        <div class="unit"><div class="num" id="seconds">00</div><div class="lab">Seconds</div></div>
+      </div>
+      <div class="closer">one day closer to you ♡</div>
+      <div class="garden-count" id="gardenCount"></div>
+    </section>
+
+    <div class="photo"><div class="polaroid"><img src="us.jpg" alt="Judy and Gaith as children"></div></div>
+
+    <div class="message">Different places, same sky,<br>counting the days until we're<br>in each other's arms again. ♡</div>
+    <div class="names">Judy ♡ Gaith</div>
+
+    <div class="actions">
+      <button class="action" id="letterBtn" type="button">💌 Open when you miss me</button>
+      <button class="action" id="fireflyBtn" type="button">✨ Make a wish</button>
+    </div>
+
+    <div class="letter" id="letter">
+      If you're reading this, I hope you know that somewhere under the same sky,
+      I'm thinking about you too. Every little number on this countdown means
+      we're one step closer to seeing each other again. ♡
+      <br><br>
+      — Judy
+    </div>
+
+    <div class="memory" id="memory"></div>
+  </main>
+
+  <div class="heart" style="left:7%;animation-duration:12s">♡</div>
+  <div class="heart" style="left:23%;animation-duration:15s;animation-delay:2s">♥</div>
+  <div class="heart" style="left:48%;animation-duration:11s;animation-delay:4s">♡</div>
+  <div class="heart" style="left:72%;animation-duration:14s;animation-delay:1s">♥</div>
+  <div class="heart" style="left:90%;animation-duration:13s;animation-delay:5s">♡</div>
+
+  <div class="petal" style="left:10%;animation-duration:13s">🌸</div>
+  <div class="petal" style="left:31%;animation-duration:16s;animation-delay:3s">🌸</div>
+  <div class="petal" style="left:58%;animation-duration:14s;animation-delay:6s">🌸</div>
+  <div class="petal" style="left:83%;animation-duration:18s;animation-delay:2s">🌸</div>
+
+  <div class="firefly" style="left:17%;top:55%;animation-delay:.4s"></div>
+  <div class="firefly" style="left:38%;top:62%;animation-delay:2s"></div>
+  <div class="firefly" style="left:66%;top:50%;animation-delay:1s"></div>
+  <div class="firefly" style="left:82%;top:67%;animation-delay:3s"></div>
+
+  <div class="garden">
+    <div class="flower" style="left:6%">🌼</div><div class="flower" style="left:21%;animation-delay:1s">🌸</div><div class="flower" style="left:43%;animation-delay:2s">🌼</div><div class="flower" style="left:66%;animation-delay:1.5s">🌸</div><div class="flower" style="left:88%;animation-delay:3s">🌼</div>
+    <div class="grass" style="left:3%"></div><div class="grass" style="left:10%;animation-delay:.5s"></div><div class="grass" style="left:18%;animation-delay:1s"></div><div class="grass" style="left:29%;animation-delay:1.5s"></div><div class="grass" style="left:39%;animation-delay:.7s"></div><div class="grass" style="left:51%;animation-delay:2s"></div><div class="grass" style="left:63%;animation-delay:1.2s"></div><div class="grass" style="left:75%;animation-delay:.3s"></div><div class="grass" style="left:87%;animation-delay:1.7s"></div><div class="grass" style="left:96%;animation-delay:.9s"></div>
+  </div>
+
+  <section class="meeting" id="meeting">
+    <h2>Today. Finally. ♡</h2>
+    <p>After all those days of counting,<br>there's nothing left to count.</p>
+    <div style="font-size:52px;margin-top:25px">🌸 💕 🌷</div>
+  </section>
+</div>
+
+<script>
+/* ===========================
+   COUNTDOWN SETTINGS
+   ===========================
+   You don't know the meeting time yet,
+   so this currently targets the beginning
+   of November 10, 2026.
+
+   When you know the time, change ONLY this:
+   "November 10, 2026 00:00:00"
+*/
+const TARGET = new Date("November 10, 2026 00:00:00").getTime();
+
+const daysEl=document.getElementById("days");
+const hoursEl=document.getElementById("hours");
+const minsEl=document.getElementById("minutes");
+const secsEl=document.getElementById("seconds");
+const headline=document.getElementById("headline");
+const gardenCount=document.getElementById("gardenCount");
+const mainPage=document.getElementById("mainPage");
+const meeting=document.getElementById("meeting");
+
+function pad(n){return String(n).padStart(2,"0")}
+
+function updateCountdown(){
+  const diff=TARGET-Date.now();
+
+  if(diff<=0){
+    daysEl.textContent="00";hoursEl.textContent="00";minsEl.textContent="00";secsEl.textContent="00";
+    headline.innerHTML="Today.<br>Finally. ♡";
+    gardenCount.textContent="The waiting is over.";
+    document.querySelector(".message").innerHTML="No more counting. Just go find each other. ♡";
+    meeting.classList.add("show");
+    return;
+  }
+
+  const days=Math.floor(diff/86400000);
+  const hours=Math.floor((diff%86400000)/3600000);
+  const mins=Math.floor((diff%3600000)/60000);
+  const secs=Math.floor((diff%60000)/1000);
+
+  daysEl.textContent=pad(days);
+  hoursEl.textContent=pad(hours);
+  minsEl.textContent=pad(mins);
+  secsEl.textContent=pad(secs);
+
+  /* A tiny flower appears as the meeting gets closer.
+     This is calculated independently on every phone,
+     so both of you see the same stage. */
+  const totalDays=Math.max(1,Math.ceil((TARGET-Date.now()+1)/86400000));
+  const passed=Math.max(0,60-totalDays);
+  const flowers=Math.min(12,Math.max(1,Math.floor(passed/5)+1));
+  gardenCount.textContent="Our little garden: "+"🌷".repeat(flowers);
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+document.getElementById("letterBtn").addEventListener("click",()=>{
+  document.getElementById("letter").classList.toggle("open");
+});
+
+document.getElementById("fireflyBtn").addEventListener("click",()=>{
+  for(let i=0;i<7;i++){
+    const f=document.createElement("div");
+    f.className="firefly";
+    f.style.left=(35+Math.random()*30)+"%";
+    f.style.top=(45+Math.random()*25)+"%";
+    f.style.animationDuration=(1.5+Math.random()*2)+"s";
+    f.style.zIndex="25";
+    mainPage.appendChild(f);
+    setTimeout(()=>f.remove(),3000);
+  }
+  document.getElementById("fireflyBtn").textContent="✨ Wish sent ♡";
+  setTimeout(()=>document.getElementById("fireflyBtn").textContent="✨ Make a wish",1800);
+});
+</script>
+</body>
+</html>
